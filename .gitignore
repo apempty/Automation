@@ -1,52 +1,26 @@
-# Prerequisites
-*.d
+# Add any directories, files, or patterns you don't want to be tracked by version control
+# Logs
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
+# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
-# Linker output
-*.ilk
-*.map
-*.exp
+# IDE-specific stuff
+.idea
+.vs
+.vs/
+.idea/
 
-# Precompiled Headers
-*.gch
-*.pch
+# testing
+coverage/
+bin/
+obj/
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+# production
+build/
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+# Build related
+tools/**
+!tools/packages.config
+!tools/nuget.exe
+packages/
+/*.user
