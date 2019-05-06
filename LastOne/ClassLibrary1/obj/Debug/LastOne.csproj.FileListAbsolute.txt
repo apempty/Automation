@@ -1,0 +1,16 @@
+D:\LastOne\Automation\LastOne\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+D:\LastOne\Automation\LastOne\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+D:\LastOne\Automation\LastOne\ClassLibrary1\bin\Debug\nunit.framework.dll
+D:\LastOne\Automation\LastOne\ClassLibrary1\bin\Debug\WebDriver.dll
+D:\LastOne\Automation\LastOne\ClassLibrary1\bin\Debug\nunit.framework.pdb
+D:\LastOne\Automation\LastOne\ClassLibrary1\bin\Debug\nunit.framework.xml
+D:\LastOne\Automation\LastOne\ClassLibrary1\bin\Debug\WebDriver.xml
+D:\LastOne\Automation\LastOne\ClassLibrary1\obj\Debug\LastOne.csprojAssemblyReference.cache
+D:\LastOne\Automation\LastOne\ClassLibrary1\obj\Debug\LastOne.csproj.CoreCompileInputs.cache
+D:\LastOne\Automation\LastOne\ClassLibrary1\obj\Debug\LastOne.csproj.CopyComplete
+D:\LastOne\Automation\LastOne\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+D:\LastOne\Automation\LastOne\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+D:\LastOne\Automation\LastOne\ClassLibrary1\bin\Debug\WebDriver.Support.dll
+D:\LastOne\Automation\LastOne\ClassLibrary1\bin\Debug\WebDriver.Support.xml
+D:\LastOne\Automation\LastOne\ClassLibrary1\bin\Debug\Shouldly.dll
+D:\LastOne\Automation\LastOne\ClassLibrary1\bin\Debug\Shouldly.pdb
