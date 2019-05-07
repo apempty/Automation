@@ -19,7 +19,8 @@ namespace ClassLibrary1.PageObjects
 
         private IWebElement UserNameInput => _driver.FindElement(By.Id("username"));
         private IWebElement PasswordInput => _driver.FindElement(By.Id("password"));
-        private IWebElement LoginButton => _driver.FindElement(By.ClassName("btn btn-primary btn btn-default"));
+        private IWebElement LoginButton => _driver.FindElement(By.XPath("//button[@variant='primary']"));
+        private IWebElement LoginHeaderH2 => _driver.FindElement(By.XPath("//h2[contains(text(), Login)]"));
 
         public void LoginInput(string userName, string password)
         {
@@ -30,6 +31,10 @@ namespace ClassLibrary1.PageObjects
         public void LoginButtonClick()
         {
             LoginButton.Click();
+        }
+        public string LoginHeaderH2Text()
+        {
+            return LoginHeaderH2.Text;
         }
 
     }

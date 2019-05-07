@@ -14,26 +14,29 @@ namespace ClassLibrary1.Test
     class LoginTest
     {
         [Test]
+
          public void LoginPageTest()
         {
-           var userName = "admin";
+            
+            var userName = "admin";
            var password = "2VLu=j^ykC";
 
 
             using (var driver = new ChromeDriver())
             {
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
                 driver.Navigate().GoToUrl("https://nitro.duckdns.org/sst-classes/login");
                 var loginPage = new LoginPage(driver);
                 
                 loginPage.LoginInput(userName, password);
                 loginPage.LoginButtonClick();
 
-                var clientPage = new ClientPage(driver);
+                var clientPage = new NavigationMenuPage(driver);
 
-                clientPage.ClientPageHeader().ShouldContain("admin");
-                clientPage.ClientPageHeaderAdmin().ShouldContain("Client");
+                clientPage.ClientPageHeader().ShouldContain("Clients");
+                clientPage.ClientPageHeaderAdmin().ShouldContain("admin");
                 clientPage.SelectLogOut();
-
+                loginPage.LoginHeaderH2Text().ShouldContain("Login");
             }
 
         }
