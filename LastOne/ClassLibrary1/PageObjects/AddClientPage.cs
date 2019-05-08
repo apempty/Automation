@@ -30,6 +30,7 @@ namespace ClassLibrary1.PageObjects
         private IWebElement ZipCodeInput => _driver.FindElement(By.Name("zipCode"));
         private IWebElement UploadPhoto => _driver.FindElement(By.Id("filepond--drop-label-3hy6dau9s"));
         private IWebElement SaveButton => _driver.FindElement(By.XPath("//button[contains(text(), 'Save')]"));
+        private IWebElement ClientHeader => _driver.FindElement(By.XPath("//h2[contains(text(), 'Client')]"));
 
 
         public string AddClientHeader()
@@ -62,7 +63,10 @@ namespace ClassLibrary1.PageObjects
             SaveButton.Click();
 
         }
-
+        public string ClientHeaderText()
+        {
+            return ClientHeader.Text;
+        }
 
     }
 }
