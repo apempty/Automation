@@ -11,42 +11,32 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary1.Test
 {
+
     [TestFixture]
-    class AddClientPageTest
+    class ClientSearchTest
     {
         [Test]
-        public void ClientTestPage()
+        public void ClientSearchPageTest()
         {
             var userName = "admin";
             var password = "2VLu=j^ykC";
-            var customer = new Customer();
+            string email = "ilka@mailinator.com";
 
             using (var driver = new ChromeDriver())
             {
+
                 driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
                 driver.Navigate().GoToUrl("https://nitro.duckdns.org/sst-classes/login");
 
                 var loginPage = new LoginPage(driver);
-                var navigationMenuPage = new NavigationMenuPage(driver);
-                var addClientPage = new AddClientPage(driver);
-
+                var clientSearchPage = new ClientSearchPage(driver);
+                
                 loginPage.LoginInput(userName, password);
                 loginPage.LoginButtonClick();
-                navigationMenuPage.AddClientButtonClick();
-                addClientPage.AddClientHeader().ShouldContain("Add Client");
-                addClientPage.FillOutContactInformation(customer);
-                addClientPage.SelectTeacher("Teacher Two");
-                addClientPage.SelectState("Illinois");
-                addClientPage.SelectZipCode("60634");
-                addClientPage.SaveButtonClick();
-                addClientPage.ClientHeaderText().ShouldContain("Client");
+                clientSearchPage.SearchInputClick(email);
+                clientSearchPage.SearchTableClient().ShouldContain("Iryna Shch");
+
             }
-
-
-
-
-
         }
-
     }
 }
