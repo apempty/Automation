@@ -20,11 +20,11 @@ namespace ClassLibrary1.PageObjects
         private IWebElement LogOutButton => _driver.FindElement(By.XPath("//a[contains(text(), ' Logout')]"));
         private IWebElement AddClientButton => _driver.FindElement(By.XPath("//a[contains(text(), ' Add Client')]"));
 
-        public string ClientPageHeader()
+        public string GetClientPageHeader()
         {
            return ClientHeaderH2.Text;
         }
-        public string ClientPageHeaderAdmin()
+        public string getClientPageHeaderAdmin()
         {
             return ClientHeaderH1.Text;
         }

@@ -30,16 +30,11 @@ namespace ClassLibrary1.Test
                 var navigationMenuPage = new NavigationMenuPage(driver);
                 var addClientPage = new AddClientPage(driver);
 
-                loginPage.LoginInput(userName, password);
-                loginPage.LoginButtonClick();
+                loginPage.Login(userName, password);
                 navigationMenuPage.AddClientButtonClick();
                 addClientPage.AddClientHeader().ShouldContain("Add Client");
-                addClientPage.FillOutContactInformation(customer);
-                addClientPage.SelectTeacher("Teacher Two");
-                addClientPage.SelectState("Illinois");
-                addClientPage.SelectZipCode("60634");
-                addClientPage.SaveButtonClick();
-                addClientPage.ClientHeaderText().ShouldContain("Client");
+                addClientPage.FillOutContactInformation(customer, "Teacher Two", "Illinois", "60634");
+                addClientPage.GetClientHeader().ShouldContain("Client");
             }
 
 

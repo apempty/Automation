@@ -69,6 +69,7 @@
     <Compile Include="TestData\Customer.cs" />
     <Compile Include="Test\AddClientPageTest.cs" />
     <Compile Include="Test\ClientSearchTest.cs" />
+    <Compile Include="Test\DeleteClientTest.cs" />
     <Compile Include="Test\LoginTest.cs" />
   </ItemGroup>
   <ItemGroup />

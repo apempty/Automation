@@ -30,11 +30,10 @@ namespace ClassLibrary1.Test
 
                 var loginPage = new LoginPage(driver);
                 var clientSearchPage = new ClientSearchPage(driver);
-                
-                loginPage.LoginInput(userName, password);
-                loginPage.LoginButtonClick();
-                clientSearchPage.SearchInputClick(email);
-                clientSearchPage.SearchTableClient().ShouldContain("Iryna Shch");
+
+                loginPage.Login(userName, password);
+                clientSearchPage.SearchInputClick();
+                clientSearchPage.GetSearchTableClient().ShouldContain("Iryna Shch");
 
             }
         }

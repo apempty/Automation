@@ -27,16 +27,15 @@ namespace ClassLibrary1.Test
                 driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
                 driver.Navigate().GoToUrl("https://nitro.duckdns.org/sst-classes/login");
                 var loginPage = new LoginPage(driver);
-                
-                loginPage.LoginInput(userName, password);
-                loginPage.LoginButtonClick();
+
+                loginPage.Login(userName, password);
 
                 var clientPage = new NavigationMenuPage(driver);
 
-                clientPage.ClientPageHeader().ShouldContain("Clients");
-                clientPage.ClientPageHeaderAdmin().ShouldContain("admin");
+                clientPage.GetClientPageHeader().ShouldContain("Clients");
+                clientPage.getClientPageHeaderAdmin().ShouldContain("admin");
                 clientPage.SelectLogOut();
-                loginPage.LoginHeaderH2Text().ShouldContain("Login");
+                loginPage.GetLoginHeaderH2().ShouldContain("Login");
             }
 
         }

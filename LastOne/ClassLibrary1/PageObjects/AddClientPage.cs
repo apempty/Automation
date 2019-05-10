@@ -31,42 +31,45 @@ namespace ClassLibrary1.PageObjects
         private IWebElement UploadPhoto => _driver.FindElement(By.Id("filepond--drop-label-3hy6dau9s"));
         private IWebElement SaveButton => _driver.FindElement(By.XPath("//button[contains(text(), 'Save')]"));
         private IWebElement ClientHeader => _driver.FindElement(By.XPath("//h2[contains(text(), 'Client')]"));
+        private IWebElement DeleteButton => _driver.FindElement(By.XPath("//a[@title= 'delete']"));
+        private IWebElement ConfirmDeleteButton => _driver.FindElement(By.XPath("//b[contains(text(),  'Confirm')]"));
+        private IWebElement ClientId => _driver.FindElement(By.XPath("//a[@title=  'Click to Edit']"));
+        
 
 
-        public string AddClientHeader()
-        {
-            return AddClientPageHeader.Text;
-        }
-        public void SelectTeacher(string teacherText)
-        {
-            TeacherDrop.SelectByText(teacherText);
-        }
-
-        public void FillOutContactInformation(Customer customer)
+        public void FillOutContactInformation(Customer customer, string teacherText, string stateValue, string zipValue)
         {
             FirstNameInput.SendKeys(customer.FirstName);
             LastNameInput.SendKeys(customer.LastName);
             PhoneInput.SendKeys(customer.PhoneNumber);
             EmailInput.SendKeys(customer.Email);
             CompanyInput.SendKeys(customer.Company);
-        }
-        public void SelectState(string stateValue)
-        {
+            TeacherDrop.SelectByText(teacherText);
             StateDrop.SelectByText(stateValue);
-        }
-        public void SelectZipCode(string zipValue)
-        {
             ZipCodeInput.SendKeys(zipValue);
-        }
-        public void SaveButtonClick()
-        {
             SaveButton.Click();
 
         }
-        public string ClientHeaderText()
+      
+        public string GetClientHeader()
         {
             return ClientHeader.Text;
         }
-
+        public string AddClientHeader()
+        {
+            return AddClientPageHeader.Text;
+        }
+        public void DeleteButtonClick()
+        {
+            DeleteButton.Click();
+        }
+        public void ConfirmDeleteButtonClick()
+        {
+            ConfirmDeleteButton.Click();
+        }
+        public string GetClientId()
+        {
+            return ClientId.Text;
+        }
     }
 }
