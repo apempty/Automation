@@ -15,6 +15,7 @@ namespace ClassLibrary1.PageObjects
             _driver = driver;
         }
 
+        // TODO: it is not obvious what ClientHeaderH1 and ClientHeaderH2 web elements mean. Please rename those two properties to be more explicit 
         private IWebElement ClientHeaderH2 => _driver.FindElement(By.XPath("//h2[contains(text(), 'Clients')]"));
         private IWebElement ClientHeaderH1 => _driver.FindElement(By.XPath("//a[contains(text(), 'admin')]"));
         private IWebElement LogOutButton => _driver.FindElement(By.XPath("//a[contains(text(), ' Logout')]"));

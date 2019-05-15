@@ -18,6 +18,7 @@ namespace ClassLibrary1.PageObjects
             _driver = driver;
         }
         
+        // TODO: AddClientPageHeader and ClientHeader property names are confusing. Please rename.
         private IWebElement AddClientPageHeader => _driver.FindElement(By.XPath("//div[@class='center']"));
         private SelectElement TeacherDrop => new SelectElement(_driver.FindElement(By.Name("teacherId")));
         private IWebElement CompanyInput => _driver.FindElement(By.Name("company"));
@@ -54,6 +55,7 @@ namespace ClassLibrary1.PageObjects
         {
             StateDrop.SelectByText(stateValue);
         }
+        // TODO: change method name to EnterZipCode
         public void SelectZipCode(string zipValue)
         {
             ZipCodeInput.SendKeys(zipValue);

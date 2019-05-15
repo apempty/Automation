@@ -17,6 +17,7 @@ namespace ClassLibrary1.Test
         [Test]
         public void ClientTestPage()
         {
+            // TODO: think how to avoid duplicating the same username and password in each test. Also what if another environment the credentials are different?
             var userName = "admin";
             var password = "2VLu=j^ykC";
             var customer = new Customer();
@@ -40,6 +41,7 @@ namespace ClassLibrary1.Test
                 addClientPage.SelectZipCode("60634");
                 addClientPage.SaveButtonClick();
                 addClientPage.ClientHeaderText().ShouldContain("Client");
+                // TODO: Verify a table with your student record appears.
             }
 
 
