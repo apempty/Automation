@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using ClassLibrary1.ElementExtention;
 using ClassLibrary1.TestData;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
@@ -18,7 +19,7 @@ namespace ClassLibrary1.PageObjects
             _driver = driver;
         }
         
-        private IWebElement AddClientPageHeader => _driver.FindElement(By.XPath("//div[@class='center']"));
+        private IWebElement PageHeader => _driver.FindElement(By.XPath("//div[@class='center']"));
         private SelectElement TeacherDrop => new SelectElement(_driver.FindElement(By.Name("teacherId")));
         private IWebElement CompanyInput => _driver.FindElement(By.Name("company"));
         private IWebElement FirstNameInput => _driver.FindElement(By.Name("firstName"));
@@ -28,6 +29,12 @@ namespace ClassLibrary1.PageObjects
         private IWebElement PhoneInput => _driver.FindElement(By.Name("phoneNumber"));
         private IWebElement EmailInput => _driver.FindElement(By.Name("email"));
         private IWebElement ZipCodeInput => _driver.FindElement(By.Name("zipCode"));
+
+        internal void FillOutContactInformation(Customer customer, object teacherTwo, object state, object zip)
+        {
+            throw new NotImplementedException();
+        }
+
         private IWebElement UploadPhoto => _driver.FindElement(By.Id("filepond--drop-label-3hy6dau9s"));
         private IWebElement SaveButton => _driver.FindElement(By.XPath("//button[contains(text(), 'Save')]"));
         private IWebElement ClientHeader => _driver.FindElement(By.XPath("//h2[contains(text(), 'Client')]"));
@@ -37,16 +44,16 @@ namespace ClassLibrary1.PageObjects
         
 
 
-        public void FillOutContactInformation(Customer customer, string teacherText, string stateValue, string zipValue)
+        public void FillOutContactInformation(Customer customer)
         {
             FirstNameInput.SendKeys(customer.FirstName);
             LastNameInput.SendKeys(customer.LastName);
             PhoneInput.SendKeys(customer.PhoneNumber);
             EmailInput.SendKeys(customer.Email);
             CompanyInput.SendKeys(customer.Company);
-            TeacherDrop.SelectByText(teacherText);
-            StateDrop.SelectByText(stateValue);
-            ZipCodeInput.SendKeys(zipValue);
+            TeacherDrop.SelectByText(customer.TeacherTwo);
+            StateDrop.SelectByText(customer.State);
+            ZipCodeInput.SendKeys(customer.Zip);
             SaveButton.Click();
 
         }
@@ -57,7 +64,7 @@ namespace ClassLibrary1.PageObjects
         }
         public string AddClientHeader()
         {
-            return AddClientPageHeader.Text;
+            return PageHeader.Text;
         }
         public void DeleteButtonClick()
         {
@@ -65,11 +72,23 @@ namespace ClassLibrary1.PageObjects
         }
         public void ConfirmDeleteButtonClick()
         {
-            ConfirmDeleteButton.Click();
+            ConfirmDeleteButton.WaitFor(3).Click();
         }
         public string GetClientId()
         {
             return ClientId.Text;
         }
+        public void EditeFirstLast(string FirstName, string LastName, string Email)
+        {
+            FirstNameInput.SendKeys(FirstName);
+            LastNameInput.SendKeys(LastName);
+            EmailInput.SendKeys(Email);
+            SaveButton.Click();
+
+        }
+
+
+
+
     }
 }

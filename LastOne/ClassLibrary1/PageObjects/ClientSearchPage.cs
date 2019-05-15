@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using ClassLibrary1.ElementExtention;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace ClassLibrary1.PageObjects
             _driver = driver;
         }
         private IWebElement SearchInput => _driver.FindElement(By.Id("q"));
-        private IWebElement SearchButton => _driver.FindElement(By.XPath("//button[contains(text(), ' Search')]/span"));
+        private IWebElement SearchButton => _driver.FindElement(By.XPath("//button[@type='submit']"));
         private IWebElement SearchTable => _driver.FindElement(By.XPath("//table[@class='table']"));
         private IWebElement NoRecords => _driver.FindElement(By.XPath("//div[contains(text(), 'No records')]"));
         private IWebElement AllSearchPage => _driver.FindElement(By.XPath("//div[@id= 'content-wrap']"));
@@ -44,5 +45,13 @@ namespace ClassLibrary1.PageObjects
         {
             return AllSearchPage.Text;
         }
+
+        public void EditeClientId()
+        {
+            ClientIdInput.Click();
+
+        }
+
+
     }
 }

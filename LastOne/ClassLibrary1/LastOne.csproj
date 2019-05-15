@@ -44,6 +44,7 @@
       <HintPath>..\packages\Shouldly.3.0.2\lib\net451\Shouldly.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
@@ -61,6 +62,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Configuration\Config.cs" />
+    <Compile Include="Configuration\URLs.cs" />
+    <Compile Include="ElementExtention\ElementWaiter.cs" />
     <Compile Include="PageObjects\AddClientPage.cs" />
     <Compile Include="PageObjects\ClientSearchPage.cs" />
     <Compile Include="PageObjects\NavigationMenuPage.cs" />
@@ -70,10 +74,12 @@
     <Compile Include="Test\AddClientPageTest.cs" />
     <Compile Include="Test\ClientSearchTest.cs" />
     <Compile Include="Test\DeleteClientTest.cs" />
+    <Compile Include="Test\EditeClientTest.cs" />
     <Compile Include="Test\LoginTest.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

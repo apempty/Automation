@@ -1,7 +1,9 @@
-﻿using ClassLibrary1.PageObjects;
+﻿using ClassLibrary1.Configuration;
+using ClassLibrary1.PageObjects;
 using ClassLibrary1.TestData;
 using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 using Shouldly;
 using System;
 using System.Collections.Generic;
@@ -15,35 +17,45 @@ namespace ClassLibrary1.Test
     [TestFixture]
     class DeleteClientTest
     {
+        string userName = "admin";
+        string password = "2VLu=j^ykC";
+        Customer customer = new Customer();
+   
+
+
+
+
+
         [Test]
         public void DeleteClient()
         {
             {
-                var userName = "admin";
-                var password = "2VLu=j^ykC";
-                var customer = new Customer();
-
                 using (var driver = new ChromeDriver())
                 {
-                    driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-                    driver.Navigate().GoToUrl("https://nitro.duckdns.org/sst-classes/login");
+
+                    driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+                    URLs.OpenUrl(driver);
                     var loginPage = new LoginPage(driver);
                     var navigationMenuPage = new NavigationMenuPage(driver);
                     var addClientPage = new AddClientPage(driver);
                     var clientSearchPage = new ClientSearchPage(driver);
-
+                  
                     loginPage.Login(userName, password);
                     navigationMenuPage.AddClientButtonClick();
-                    addClientPage.FillOutContactInformation(customer, "Teacher Two", "Illinois", "60634");
-                    addClientPage.GetClientId().ShouldContain(addClientPage.GetClientId());
-         
+                    addClientPage.FillOutContactInformation(customer);
+
+                    string id = addClientPage.GetClientId();
+
+                    addClientPage.GetClientId().ShouldContain(id);
+                    
                     addClientPage.DeleteButtonClick();
 
-                    Thread.Sleep(1000);
-                    
+                   
+
                     addClientPage.ConfirmDeleteButtonClick();
 
-                    clientSearchPage.SearchInputId(addClientPage.GetClientId());
+                    clientSearchPage.SearchInputId(id);
+
                     clientSearchPage.SearchInputClick();
                     clientSearchPage.GetAllSeargPage().ShouldContain(clientSearchPage.GetNoRecords());
 

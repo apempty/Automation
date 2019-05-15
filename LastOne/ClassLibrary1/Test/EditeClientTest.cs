@@ -13,37 +13,44 @@ using System.Threading.Tasks;
 namespace ClassLibrary1.Test
 {
     [TestFixture]
-    class AddClientPageTest
+    class EditeClientTest
     {
+
+
+        string userName = "admin";
+        string password = "2VLu=j^ykC";
+        Customer customer = new Customer();
+        string FirstName = "Artem";
+        string LastName = "Prodrukh";
+        string Email = "artem@gmail.com";
+
+
         [Test]
-        public void ClientTestPage()
+        public void DeleteClient()
+
         {
-            var userName = "admin";
-            var password = "2VLu=j^ykC";
-            var customer = new Customer();
-          
             using (var driver = new ChromeDriver())
             {
+
                 driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-                
                 URLs.OpenUrl(driver);
                 var loginPage = new LoginPage(driver);
                 var navigationMenuPage = new NavigationMenuPage(driver);
                 var addClientPage = new AddClientPage(driver);
+                var clientSearchPage = new ClientSearchPage(driver);
 
                 loginPage.Login(userName, password);
-
                 navigationMenuPage.AddClientButtonClick();
-                addClientPage.AddClientHeader().ShouldContain("Add Client");
                 addClientPage.FillOutContactInformation(customer);
-                addClientPage.GetClientHeader().ShouldContain("Client");
+                string id = addClientPage.GetClientId();
+                addClientPage.GetClientId().ShouldContain(id);
+
+                clientSearchPage.EditeClientId();
+                addClientPage.EditeFirstLast(FirstName, LastName, Email);
+
+
+
             }
-
-
-
-
-
         }
-
     }
 }
