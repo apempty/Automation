@@ -17,3 +17,4 @@ D:\LastOne\Automation\LastOne\ClassLibrary1\bin\Debug\Shouldly.pdb
 D:\LastOne\Automation\LastOne\ClassLibrary1\bin\Debug\Bogus.dll
 D:\LastOne\Automation\LastOne\ClassLibrary1\bin\Debug\Bogus.pdb
 D:\LastOne\Automation\LastOne\ClassLibrary1\bin\Debug\Bogus.xml
+D:\LastOne\Automation\LastOne\ClassLibrary1\bin\Debug\ClassLibrary1.dll.config

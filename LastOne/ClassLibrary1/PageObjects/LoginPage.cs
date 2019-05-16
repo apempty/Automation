@@ -22,18 +22,16 @@ namespace ClassLibrary1.PageObjects
         private IWebElement LoginButton => _driver.FindElement(By.XPath("//button[@variant='primary']"));
         private IWebElement LoginHeaderH2 => _driver.FindElement(By.XPath("//h2[contains(text(), Login)]"));
 
-        // Suggestion: instead of always using LoginInput() and LoginButtonClick() methods one by one, you could have single method which would enter username, password and click login button.
-        public void LoginInput(string userName, string password)
-        {
+
+        public void Login(string userName, string password)
+
+           {
             UserNameInput.SendKeys(userName);
             PasswordInput.SendKeys(password);
-
-        }
-        public void LoginButtonClick()
-        {
             LoginButton.Click();
         }
-        public string LoginHeaderH2Text()
+       
+        public string GetLoginHeaderH2()
         {
             return LoginHeaderH2.Text;
         }

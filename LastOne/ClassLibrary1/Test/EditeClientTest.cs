@@ -13,41 +13,44 @@ using System.Threading.Tasks;
 namespace ClassLibrary1.Test
 {
     [TestFixture]
-    class AddClientPageTest
+    class EditeClientTest
     {
+
+
+        string userName = "admin";
+        string password = "2VLu=j^ykC";
+        Customer customer = new Customer();
+        string FirstName = "Artem";
+        string LastName = "Prodrukh";
+        string Email = "artem@gmail.com";
+
+
         [Test]
-        public void ClientTestPage()
+        public void DeleteClient()
+
         {
-            // TODO: think how to avoid duplicating the same username and password in each test. Also what if another environment the credentials are different?
-            var userName = "admin";
-            var password = "2VLu=j^ykC";
-            var customer = new Customer();
-          
             using (var driver = new ChromeDriver())
             {
+
                 driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-                
                 URLs.OpenUrl(driver);
                 var loginPage = new LoginPage(driver);
                 var navigationMenuPage = new NavigationMenuPage(driver);
                 var addClientPage = new AddClientPage(driver);
+                var clientSearchPage = new ClientSearchPage(driver);
 
                 loginPage.Login(userName, password);
-
                 navigationMenuPage.AddClientButtonClick();
-                addClientPage.AddClientHeader().ShouldContain("Add Client");
                 addClientPage.FillOutContactInformation(customer);
+                string id = addClientPage.GetClientId();
+                addClientPage.GetClientId().ShouldContain(id);
 
-                addClientPage.GetClientHeader().ShouldContain("Client");
+                clientSearchPage.EditeClientId();
+                addClientPage.EditeFirstLast(FirstName, LastName, Email);
+
 
 
             }
-
-
-
-
-
         }
-
     }
 }

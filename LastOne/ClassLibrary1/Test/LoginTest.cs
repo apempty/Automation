@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Shouldly;
+using ClassLibrary1.Configuration;
 
 namespace ClassLibrary1.Test
 {
@@ -24,19 +25,19 @@ namespace ClassLibrary1.Test
 
             using (var driver = new ChromeDriver())
             {
-                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-                driver.Navigate().GoToUrl("https://nitro.duckdns.org/sst-classes/login");
+                    driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+
+                URLs.OpenUrl(driver);
                 var loginPage = new LoginPage(driver);
-                
-                loginPage.LoginInput(userName, password);
-                loginPage.LoginButtonClick();
+
+                loginPage.Login(userName, password);
 
                 var clientPage = new NavigationMenuPage(driver);
 
-                clientPage.ClientPageHeader().ShouldContain("Clients");
-                clientPage.ClientPageHeaderAdmin().ShouldContain("admin");
+                clientPage.GetClientPageHeader().ShouldContain("Clients");
+                clientPage.getClientPageHeaderAdmin().ShouldContain("admin");
                 clientPage.SelectLogOut();
-                loginPage.LoginHeaderH2Text().ShouldContain("Login");
+                loginPage.GetLoginHeaderH2().ShouldContain("Login");
             }
 
         }

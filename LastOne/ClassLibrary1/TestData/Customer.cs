@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary1.TestData
 {
-    class Customer
+  public  class Customer
     {
         public Customer()
         {
@@ -19,7 +19,11 @@ namespace ClassLibrary1.TestData
         public string PhoneNumber;
         public string Email;
         public string Company;
-       
+        public readonly string State = "Illinois";
+        public readonly string TeacherTwo = "Teacher Two";
+        public readonly string Zip = "60634";
+
+
         public void SeedRandomData()
         {
             var faker = new Faker();
@@ -29,7 +33,7 @@ namespace ClassLibrary1.TestData
             FirstName = faker.Name.FindName();
             LastName = faker.Name.LastName();
             Company = faker.Company.CompanyName();
-
+            
             
 
 
