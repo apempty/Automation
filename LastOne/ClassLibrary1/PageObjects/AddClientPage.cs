@@ -19,7 +19,9 @@ namespace ClassLibrary1.PageObjects
             _driver = driver;
         }
         
+
         private IWebElement PageHeader => _driver.FindElement(By.XPath("//div[@class='center']"));
+
         private SelectElement TeacherDrop => new SelectElement(_driver.FindElement(By.Name("teacherId")));
         private IWebElement CompanyInput => _driver.FindElement(By.Name("company"));
         private IWebElement FirstNameInput => _driver.FindElement(By.Name("firstName"));
@@ -62,7 +64,9 @@ namespace ClassLibrary1.PageObjects
         {
             return ClientHeader.Text;
         }
+
         public string AddClientHeader()
+
         {
             return PageHeader.Text;
         }

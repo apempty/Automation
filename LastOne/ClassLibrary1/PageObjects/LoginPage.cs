@@ -22,8 +22,10 @@ namespace ClassLibrary1.PageObjects
         private IWebElement LoginButton => _driver.FindElement(By.XPath("//button[@variant='primary']"));
         private IWebElement LoginHeaderH2 => _driver.FindElement(By.XPath("//h2[contains(text(), Login)]"));
 
+
         public void Login(string userName, string password)
-        {
+
+           {
             UserNameInput.SendKeys(userName);
             PasswordInput.SendKeys(password);
             LoginButton.Click();
